@@ -1,0 +1,35 @@
+name: 'SFTP Deploy'
+description: 'Deploys a file to an FTP server using SFTP and an SSH private key.'
+inputs:
+    username:
+        description: 'username'
+        required: true
+    server:
+        description: 'SFTP server hostname'
+        required: true
+    port:
+        description: 'SFTP server port, defaults to 22'
+        required: true
+        default: '22'
+    ssh_private_key:
+        description: 'SSH private key'
+        required: true
+    local_path:
+        description: 'Path of the files to be uploaded'
+        required: true
+        default: ./*
+    remote_path:
+        description: 'Path for the files to be uploaded to'
+        required: true
+        default: /
+
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+        - ${{ inputs.username }}
+        - ${{ inputs.server }}
+        - ${{ inputs.port }}
+        - ${{ inputs.ssh_private_key }}
+        - ${{ inputs.local_path }}
+        - ${{ inputs.remote_path }}
