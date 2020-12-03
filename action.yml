@@ -22,6 +22,9 @@ inputs:
         description: 'Path for the files to be uploaded to'
         required: true
         default: /
+    args:
+        description: 'SFTP Arguments'
+        required: false
 
 runs:
     using: 'docker'
@@ -33,3 +36,4 @@ runs:
         - ${{ inputs.ssh_private_key }}
         - ${{ inputs.local_path }}
         - ${{ inputs.remote_path }}
+        - ${{ inputs.args }}
