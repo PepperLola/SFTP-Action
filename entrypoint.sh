@@ -10,6 +10,8 @@ chmod 600 $SSH_PRIVATE_KEY_FILE
 echo 'Starting SFTP...'
 printf "%s" "put -r $5 $6" > $SFTP_BATCH_FILE
 
+ssh-keyscan -H andy.dreamhost.com >> ~/.ssh/known_hosts
+
 sftp -b $SFTP_BATCH_FILE -P $3 $7 -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY_FILE $1@$2
 
 echo 'Deploy successful!'
