@@ -1,3 +1,5 @@
+#!/bin/sh
+
 SSH_PRIVATE_KEY_FILE='../ssh_private_key.pem'
 SFTP_BATCH_FILE='../sftp'
 
